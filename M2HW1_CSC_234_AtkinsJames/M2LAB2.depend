@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1632002331 source:e:\schoolwork\csc-234\m2lab2\main.cpp
+	<iostream>
+
+1632191002 source:e:\schoolwork\csc-234\m2lab2_csc_234_atkinsjames\main.cpp
+	<iostream>
+	<windows.h>
+
