@@ -1,91 +1,166 @@
-// James Atkins
-// CSC-234-0901
-// M3LAB1
-// 10-11-2021
+//James Atkins
+//CSC-234-0901
+//10-02-2021
+//M3T1(Gold)This program demonstrates a class, uses multiple files for another class
 
 #include <iostream>
 
 using namespace std;
+#include "box.cpp"
 
-class Room {
-public:
-    int id;
-    string name;
-    string description;
-
-    Room() {
-    };
-
-    Room(int id, string name, string description) {
-        this->id = id;
-        this->name = name;
-        this->description = description;
-    };
-
-    void describe() {
-        cout << name << endl;
-        cout << description << endl;
-        cout << endl;
-    }
-
+//Rectangle class declaration
+class Rectangle
+{
+    private:
+        double width;
+        double length;
+    public:
+        void setWidth(double);
+        void setLength(double);
+        double getWidth() const;
+        double getLength() const;
+        double getArea() const;
 };
+
+//****************************************************
+// setWidth assigns a value to the width member.     *
+//****************************************************
+
+void Rectangle::setWidth(double w)
+{
+    width = w;
+}
+
+//****************************************************
+// setLength assigns a value to the length member.   *
+//****************************************************
+
+void Rectangle::setLength(double len)
+{
+    length = len;
+}
+
+//****************************************************
+// getWidth returns the value in the width member.   *
+//****************************************************
+
+double Rectangle::getWidth() const
+{
+    return width;
+}
+
+//****************************************************
+// getLength returns the value in the length member. *
+//****************************************************
+
+double Rectangle::getLength() const
+{
+    return length;
+}
+
+//****************************************************
+// getArea returns the product of width times length.*
+//****************************************************
+
+double Rectangle::getArea() const
+{
+    return (width * length);
+}
+
+//****************************************************
+// Function main                                     *
+//****************************************************
 
 int main()
 {
-    cout << "Room info" << endl;
-    cout << endl;
-    cout << "First room" << endl;
+    Rectangle rectangle;   // Define an instance of the Rectangle class
+    double rectWidth;      // Local variable for width
+    double rectLength;     // Local variable for length
 
-    Room livingRoom;
-    livingRoom.name = "Living Room";
-    livingRoom.id = 1;
-    livingRoom.description = "A simple living room with the carpet and a couch.";
+    Box someBox;           // Define an instance of the Box class
+    double boxWidth;       // Local variable for box width
+    double boxLength;      // Local variable for box length
+    double boxHeight;      // Local variable for box height
 
-    cout << livingRoom.name << endl;
-    cout << livingRoom.id << endl;
-    cout << livingRoom.description << endl;
-    cout << endl;
-    cout << "Next room" << endl;
+    string input;          // Variable for start of program
 
-    Room kitchen = Room(2, "Kitchen", "A small, dimly lit kitchen.");
-    cout << kitchen.name << endl;
-    cout << kitchen.id << endl;
-    cout << kitchen.description << endl;
-    cout << endl;
-    cout << "Next room" << endl;
+    cout << "Would you like to find the area or the volume?" << endl;
+    cout << "(1) Area" << endl;
+    cout << "(2) Volume" << endl;
+    cin >> input;
+    if (input == "1")
+    {
+    // Rectangle calculation
+    // Get the rectangle's width and length from the user
+    // using input validation.
+        cout << "This program will calculate the area of rectangle. What is the width?" << endl;
+        cin >> rectWidth;
+        while (rectWidth <= 0)
+        {
+            cout << "That is not possible. What is the width?" << endl;
+            cin >> rectWidth;
+        }
+        rectangle.setWidth(rectWidth);
 
-    Room bedroom = Room(3, "Bedroom", "A bedroom with no closet");
-    cout << bedroom.name << endl;
-    cout << bedroom.id << endl;
-    cout << bedroom.description << endl;
-    cout << endl;
-    cout << "Next room" << endl;
+        cout << "What is the length?" << endl;
+        cin >> rectLength;
+        while (rectLength <= 0)
+        {
+            cout << "That is not possible. What is the length?" << endl;
+            cin >> rectLength;
+        }
+        rectangle.setLength(rectLength);
 
-    Room bathroom;
-    bathroom.name = "Bathroom";
-    bathroom.id = 4;
-    bathroom.description = "A tiny bathroom with a stand-up shower.";
+    // Store the width and length of the rectangle
+    // in the rectangle object.
+    // Display the rectangle's data.
+        cout << "Here is the rectangle's data:" << endl;
+        cout << "Width: " << rectangle.getWidth() << endl;
+        cout << "Length: " << rectangle.getLength() << endl;
+        cout << "Area: " << rectangle.getArea() << endl;
+        cout << endl;
+    }
+    else if (input == "2")
+    {
+    // Box Calculation
+    // Get the rectangle's width, length, height, from the user
+    // using input validation.
+        cout << "This program will calculate the volume of a box. What is the width?" << endl;
+        cin >> boxWidth;
+        while (boxWidth <= 0)
+        {
+            cout << "That is not possible. What is the width?" << endl;
+            cin >> boxWidth;
+        }
+        someBox.setWidthBox(boxWidth);
 
-    cout << bathroom.name << endl;
-    cout << bathroom.id << endl;
-    cout << bathroom.description << endl;
-    cout << endl;
-    cout << "Last room" << endl;
+        cout << "What is the length?" << endl;
+        cin >> boxLength;
+        while (boxLength <= 0)
+        {
+            cout << "That is not possible. What is the length?" << endl;
+            cin >> boxLength;
+        }
+        someBox.setLengthBox(boxLength);
 
-    Room hallway = Room(5, "Hallway", "A short hallway leading to all the other rooms.");
-    cout << hallway.name << endl;
-    cout << hallway.id << endl;
-    cout << hallway.description << endl;
-    cout << endl;
+        cout << "What is the height?" << endl;
+        cin >> boxHeight;
+        while (boxHeight <= 0)
+        {
+            cout << "That is not possible. What is the height?" << endl;
+            cin >> boxHeight;
+        }
+        someBox.setHeightBox(boxHeight);
 
-    cout << "With description function" << endl;
-    cout << endl;
-    livingRoom.describe();
-    kitchen.describe();
-    bedroom.describe();
-    bathroom.describe();
-    hallway.describe();
-
+    // Store the width, length, height of the box
+    // in the box object.
+    // Display the box's data.
+        cout << "Here is the rectangle's data:" << endl;
+        cout << "Width: " << someBox.getWidthBox() << endl;
+        cout << "Length: " << someBox.getLengthBox() << endl;
+        cout << "Height: " << someBox.getHeightBox() << endl;
+        cout << "Volume: " << someBox.getVolume() << endl;
+    }
 
     return 0;
 }
